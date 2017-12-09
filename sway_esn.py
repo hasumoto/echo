@@ -18,13 +18,13 @@ f.close()
 
 import esn
 
-din = np.array(y[0:300],np.float32)
-dout = np.array([0.0]*300,np.float32)
+din = np.array(y[0:1000],np.float32)
+dout = np.array([0.0]*1000,np.float32)
 yf = fft(din)
 
-plt.plot(y, label="close")
+plt.plot(y, label="y")
 
-echo_state = esn.ESN(1,300,1)
+echo_state = esn.ESN(1,1000,1)
 echo_state.train(yf,dout)
 out = echo_state.prop_sequence(yf)[1]
 
