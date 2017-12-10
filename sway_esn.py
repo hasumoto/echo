@@ -20,13 +20,15 @@ import esn
 
 din = np.array(y[0:1000],np.float32)
 dout = np.array([0.0]*1000,np.float32)
-yf = fft(din)
+#yf = fft(din)
 
 plt.plot(y, label="y")
 
-echo_state = esn.ESN(1,1000,1)
-echo_state.train(yf,dout)
-out = echo_state.prop_sequence(yf)[1]
+echo_state = esn.ESN(1,200,1)
+echo_state.train(din,dout)
+out = echo_state.prop_sequence(din)[1]
+
+print din
 
 plt.plot(out, label="esn")
 
